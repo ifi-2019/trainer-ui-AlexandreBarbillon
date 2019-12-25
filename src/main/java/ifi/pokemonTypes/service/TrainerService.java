@@ -11,4 +11,5 @@ public interface TrainerService {
     List<Trainer> getTrainers();
     public void setRestTemplate(RestTemplate restTemplate);
     public void setPokemonTypeServiceUrl(String pokemonServiceUrl);
+    Trainer getTrainer(String userName);
 }

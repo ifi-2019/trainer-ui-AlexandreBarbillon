@@ -3,6 +3,7 @@ package ifi.pokemonTypes.service;
 import ifi.pokemonTypes.bo.PokemonType;
 import ifi.pokemonTypes.bo.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +23,19 @@ public class TrainerServiceImpl implements TrainerService {
         return Arrays.asList(res);
     }
 
+    @Override
+    public Trainer getTrainer(String userName) {
+        List<Trainer> trainers = getTrainers();
+        for(Trainer trainer: trainers){
+            if(trainer.getName().equals(userName)){
+                return trainer;
+            }
+        }
+        return null;
+    }
+
     @Autowired
+    @Qualifier("trainerApiRestTemplate")
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
@@ -31,4 +44,6 @@ public class TrainerServiceImpl implements TrainerService {
     public void setPokemonTypeServiceUrl(String trainerServiceUrl) {
         this.trainerServiceUrl = trainerServiceUrl;
     }
+
+
 }

@@ -1,6 +1,6 @@
 package ifi.pokemonTypes.service;
 
-import ifi.pokemonTypes.service.PokemonTypeService;
+import ifi.pokemonTypes.bo.Trainer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,17 +9,19 @@ import org.springframework.web.client.RestTemplate;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-class PokemonTypeServiceIntegrationTest {
+class TrainerServiceIntegrationTest {
 
     @Autowired
-    PokemonTypeService service;
+    TrainerService service;
 
     @Autowired
     RestTemplate restTemplate;
 
     @Test
-    void serviceAndTemplateShouldNotBeNull() {
-        assertNotNull(service);
-        assertNotNull(restTemplate);
+    void getTrainer_returnATrainer(){
+        Trainer ash = service.getTrainer("Ash");
+        assertNotNull(ash);
+        assertNotNull(ash.getName());
+        assertNotNull(ash.getPassword());
     }
 }

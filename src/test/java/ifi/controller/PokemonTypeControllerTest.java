@@ -1,5 +1,4 @@
-package com.ifi.trainer_ui.controller;
-import ifi.controller.PokemonTypeController;
+package ifi.controller;
 import ifi.pokemonTypes.bo.PokemonType;
 import ifi.pokemonTypes.service.PokemonTypeService;
 import org.junit.jupiter.api.Test;
